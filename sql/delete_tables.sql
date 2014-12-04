@@ -1,0 +1,7 @@
+DROP TABLE Exams;
+
+DROP TABLE Sections;
+
+DROP TABLE StatSets;
+
+DROP TABLE Gsis;
