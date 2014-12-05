@@ -39,7 +39,6 @@ CREATE TABLE Sections (
 CREATE TABLE Exams (
     id INT NOT NULL AUTO_INCREMENT,
     section_id INT NOT NULL,
-    sid INT NOT NULL UNIQUE,
     p1_score INT NOT NULL,
     p2_score INT NOT NULL,
     p3_score INT NOT NULL,

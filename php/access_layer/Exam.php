@@ -7,11 +7,10 @@ class Exam extends GbDbObject {
     // -- CLASS VARS
     protected static $tableName = "Exams";
 
-    protected static $primaryKeys = array(self::ID_KEY, self::SID_KEY);
+    protected static $primaryKeys = array(self::ID_KEY);
 
     // -- CONSTANTS
     const ID_KEY = "id";
-    const SID_KEY = "sid";
     const SECTION_ID_KEY = "section_id";
     const P1_SCORE_KEY = "p1_score";
     const P2_SCORE_KEY = "p2_score";
@@ -23,7 +22,6 @@ class Exam extends GbDbObject {
     // -- INSTANCE VARS
     private
         $id,
-        $sid,
         $sectionId,
         $p1Score,
         $p2Score,
@@ -33,7 +31,6 @@ class Exam extends GbDbObject {
         $totalScore;
 
     public static function create(
-        $sid,
         $section_id,
         $p1_score,
         $p2_score,
@@ -44,7 +41,6 @@ class Exam extends GbDbObject {
     ) {
         return static::createObject(
             array(
-                self::SID_KEY => $sid,
                 self::SECTION_ID_KEY => $section_id,
                 self::P1_SCORE_KEY => $p1_score,
                 self::P2_SCORE_KEY => $p2_score,
@@ -70,7 +66,6 @@ class Exam extends GbDbObject {
 
     public function initInstanceVars($params) {
         $this->id = $params[self::ID_KEY];
-        $this->sid = $params[self::SID_KEY];
         $this->sectionId = $params[self::SECTION_ID_KEY];
         $this->p1Score = $params[self::P1_SCORE_KEY];
         $this->p2Score = $params[self::P2_SCORE_KEY];
@@ -89,7 +84,6 @@ class Exam extends GbDbObject {
     protected function getDbFields() {
         return array(
             self::ID_KEY => $this->id,
-            self::SID_KEY => $this->sid,
             self::SECTION_ID_KEY => $this->sectionId,
             self::P1_SCORE_KEY => $this->p1Score,
             self::P2_SCORE_KEY => $this->p2Score,
@@ -103,16 +97,11 @@ class Exam extends GbDbObject {
     protected function getPrimaryKeys() {
         return array(
             self::ID_KEY => $this->id,
-            self::SID_KEY => $this->sid,
         );
     }
 
     public function getId() {
         return $this->id;
-    }
-
-    public function getSid() {
-        return $this->sid;
     }
 
     public function getSectionId() {

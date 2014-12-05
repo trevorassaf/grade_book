@@ -60,8 +60,7 @@ class SectionExamsBlink implements Blink {
             $order = $i + 1;
                 
             $html .= "<tr class='exam-row'>";
-            $html .= "<td class='order'>{$order}</td>"; 
-            $html .= "<td class='sid'>".$exam->getSid()."</td>";
+            // $html .= "<td class='order'>{$order}</td>"; 
             $html .= "<td class='p1-score'>".$exam->getP1Score()."</td>";
             $html .= "<td class='p2-score'>".$exam->getP2Score()."</td>";
             $html .= "<td class='p3-score'>".$exam->getP3Score()."</td>";
@@ -91,8 +90,6 @@ class SectionExamsBlink implements Blink {
         $html .= "<form name='".GradebookApi::ADD_FORM."' action='".GradebookApi::genSectionUrl($this->section)."' method='".GradebookApi::ADD_HTTP_TYPE."'>";
         $html .= "<input type='hidden' name='".GradebookApi::OP_KEY."' value='".GradebookApi::ADD_OP_VALUE."' />";
         $html .= "<input type='hidden' name='".GradebookApi::SECTION_ID_KEY."' value='".$this->section->getId()."' required />";
-        $html .= "<label for='sid-input'>Student Id: </label>";
-        $html .= "<input id='sid-input' type='text' name='".GradebookApi::SID_KEY."' placeholder='".GradebookApi::SID_PLACEHOLDER."' required />";
         $html .= "<label for='p1-input'>P1 Score: </label>";
         $html .= "<input id='p1-input' type='text' name='".GradebookApi::P1_KEY."' placeholder='".GradebookApi::P1_PLACEHOLDER."' required />";
         $html .= "<label for='p2-input'>P2 Score: </label>";

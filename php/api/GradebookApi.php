@@ -19,8 +19,10 @@ class GradebookApi extends Api {
     const ADD_OP_VALUE = "add";
     const REMOVE_OP_VALUE = "remove-exam";
 
+    // Page view
+    const SECTION_ID_KEY = "sid";
+
     // Add op
-    const SID_KEY = "sid";
     const P1_KEY = "p1";
     const P2_KEY = "p2";
     const P3_KEY = "p3";
@@ -28,7 +30,6 @@ class GradebookApi extends Api {
     const P5_KEY = "p5";
 
     // Add Placeholders
-    const SID_PLACEHOLDER = "Student Id (from your local gradebook copy)";
     const P1_PLACEHOLDER = "P1 score...";
     const P2_PLACEHOLDER = "P2 score...";
     const P3_PLACEHOLDER = "P3 score...";
@@ -37,9 +38,6 @@ class GradebookApi extends Api {
 
     // Remove op
     const EXAM_ID_KEY = "id";
-
-    // Page View
-    const SECTION_ID_KEY = "sid";
 
     // Form names
     const ADD_FORM = "add-exam";
@@ -55,7 +53,6 @@ class GradebookApi extends Api {
 
     private
         $op,
-        $sid,
         $p1,
         $p2,
         $p3,
@@ -106,7 +103,6 @@ class GradebookApi extends Api {
         switch ($this->op) {
             case self::ADD_OP_VALUE:
                 if (!isset($_POST[self::P1_KEY]) ||
-                        !isset($_POST[self::SID_KEY]) ||
                         !isset($_GET[self::SECTION_ID_KEY]) ||
                         !isset($_POST[self::P2_KEY]) ||
                         !isset($_POST[self::P3_KEY]) ||
@@ -118,7 +114,6 @@ class GradebookApi extends Api {
                 }
 
                 $this->sectionId = (int)$_GET[self::SECTION_ID_KEY];
-                $this->sid = $_POST[self::SID_KEY];
                 $this->p1 = $_POST[self::P1_KEY];
                 $this->p2 = $_POST[self::P2_KEY];
                 $this->p3 = $_POST[self::P3_KEY];
@@ -148,10 +143,6 @@ class GradebookApi extends Api {
 
     public function getOp() {
         return $this->op;
-    }
-
-    public function getSid() {
-        return $this->sid;
     }
 
     public function getP1() {
