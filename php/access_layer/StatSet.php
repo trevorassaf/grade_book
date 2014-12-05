@@ -19,12 +19,10 @@ class StatSet extends DatabaseObject {
     const P2_AVG_KEY = "p2_avg";
     const P3_AVG_KEY = "p3_avg";
     const P4_AVG_KEY = "p4_avg";
-    const P5_AVG_KEY = "p5_avg";
     const P1_STD_KEY = "p1_std_dev";
     const P2_STD_KEY = "p2_std_dev";
     const P3_STD_KEY = "p3_std_dev";
     const P4_STD_KEY = "p4_std_dev";
-    const P5_STD_KEY = "p5_std_dev";
 
     const PRECISION = 2;
 
@@ -37,12 +35,10 @@ class StatSet extends DatabaseObject {
         $p2Avg,
         $p3Avg,
         $p4Avg,
-        $p5Avg,
         $p1Std,
         $p2Std,
         $p3Std,
         $p4Std,
-        $p5Std;
 
     public static function create(
         $num_exams,
@@ -52,12 +48,10 @@ class StatSet extends DatabaseObject {
         $p2_avg,
         $p3_avg,
         $p4_avg,
-        $p5_avg,
         $p1_std,
         $p2_std,
         $p3_std,
         $p4_std,
-        $p5_std
     ) {
         return static::createObject(
             array(
@@ -68,18 +62,16 @@ class StatSet extends DatabaseObject {
                 self::P2_AVG_KEY => $p2_avg,
                 self::P3_AVG_KEY => $p3_avg,
                 self::P4_AVG_KEY => $p4_avg,
-                self::P5_AVG_KEY => $p5_avg,
                 self::P1_STD_KEY => $p1_std,
                 self::P2_STD_KEY => $p2_std,
                 self::P3_STD_KEY => $p3_std,
                 self::P4_STD_KEY => $p4_std,
-                self::P5_STD_KEY => $p5_std
             )
         );            
     }
 
     public static function createEmptySet() {
-        return self::create(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        return self::create(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 
     public static function fetchById($id) {
@@ -97,12 +89,10 @@ class StatSet extends DatabaseObject {
         $this->p2Avg = $params[self::P2_AVG_KEY];
         $this->p3Avg = $params[self::P3_AVG_KEY];
         $this->p4Avg = $params[self::P4_AVG_KEY];
-        $this->p5Avg = $params[self::P5_AVG_KEY];
         $this->p1Std = $params[self::P1_STD_KEY];
         $this->p2Std = $params[self::P2_STD_KEY]; 
         $this->p3Std = $params[self::P3_STD_KEY]; 
         $this->p4Std = $params[self::P4_STD_KEY];
-        $this->p5Std = $params[self::P5_STD_KEY];
     }
 
     protected function createObjectCallback($init_params) {
@@ -121,12 +111,10 @@ class StatSet extends DatabaseObject {
             self::P2_AVG_KEY => $this->p2Avg,
             self::P3_AVG_KEY => $this->p3Avg,
             self::P4_AVG_KEY => $this->p4Avg,
-            self::P5_AVG_KEY => $this->p5Avg,
             self::P1_STD_KEY => $this->p1Std,
             self::P2_STD_KEY => $this->p2Std,
             self::P3_STD_KEY => $this->p3Std,
             self::P4_STD_KEY => $this->p4Std,
-            self::P5_STD_KEY => $this->p5Std
         );
     }
     
@@ -168,10 +156,6 @@ class StatSet extends DatabaseObject {
         return $this->round($this->p4Avg);
     }
 
-    public function getP5Avg() {
-        return $this->round($this->p5Avg);
-    }
-
     public function getP1Std() {
         return $this->round($this->p1Std);
     }
@@ -186,10 +170,6 @@ class StatSet extends DatabaseObject {
 
     public function getP4Std() {
         return $this->round($this->p4Std);
-    }
-
-    public function getP5Std() {
-        return $this->round($this->p5Std);
     }
 
     private function round($val) {
@@ -225,10 +205,6 @@ class StatSet extends DatabaseObject {
         $this->p4Avg = $p4_avg;
     }
 
-    public function setP5Avg($p5_avg) {
-        $this->p5Avg = $p5_avg;
-    }
-    
     public function setP1Std($p1_std) {
         $this->p1Std = $p1_std;
     }
@@ -243,9 +219,5 @@ class StatSet extends DatabaseObject {
 
     public function setP4Std($p4_std) {
         $this->p4Std = $p4_std;
-    }
-
-    public function setP5Std($p5_std) {
-        $this->p5Std = $p5_std;
     }
 }

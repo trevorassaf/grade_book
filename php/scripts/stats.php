@@ -28,14 +28,12 @@ function computeStats($stat_set, $exams) {
     $p2_scores = array();
     $p3_scores = array();
     $p4_scores = array();
-    $p5_scores = array();
     foreach ($exams as $exam) {
         $total_scores[] = $exam->getTotalScore();
         $p1_scores[] = $exam->getP1Score();
         $p2_scores[] = $exam->getP2Score();
         $p3_scores[] = $exam->getP3Score();
         $p4_scores[] = $exam->getP4Score();
-        $p5_scores[] = $exam->getP5Score();
     } 
     
     $num_exams = count($exams);
@@ -49,8 +47,6 @@ function computeStats($stat_set, $exams) {
     $p3_std = stats_standard_deviation($p3_scores);
     $p4_avg = computeAvg($p4_scores);
     $p4_std = stats_standard_deviation($p4_scores);
-    $p5_avg = computeAvg($p5_scores);
-    $p5_std = stats_standard_deviation($p5_scores);
 
     $stat_set->setNumExams($num_exams);
     error_log($total_avg);
@@ -61,13 +57,11 @@ function computeStats($stat_set, $exams) {
     $stat_set->setP2Avg($p2_avg);
     $stat_set->setP3Avg($p3_avg);
     $stat_set->setP4Avg($p4_avg);
-    $stat_set->setP5Avg($p5_avg);
     
     $stat_set->setP1Std($p1_std);
     $stat_set->setP2Std($p2_std);
     $stat_set->setP3Std($p3_std);
     $stat_set->setP4Std($p4_std);
-    $stat_set->setP5Std($p5_std);
     
     $stat_set->save();
 }

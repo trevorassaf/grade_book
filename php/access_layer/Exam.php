@@ -16,7 +16,6 @@ class Exam extends GbDbObject {
     const P2_SCORE_KEY = "p2_score";
     const P3_SCORE_KEY = "p3_score";
     const P4_SCORE_KEY = "p4_score";
-    const P5_SCORE_KEY = "p5_score";
     const TOTAL_SCORE_KEY = "total_score";
 
     // -- INSTANCE VARS
@@ -27,7 +26,6 @@ class Exam extends GbDbObject {
         $p2Score,
         $p3Score,
         $p4Score,
-        $p5Score,
         $totalScore;
 
     public static function create(
@@ -36,7 +34,6 @@ class Exam extends GbDbObject {
         $p2_score,
         $p3_score,
         $p4_score,
-        $p5_score,
         $total_score
     ) {
         return static::createObject(
@@ -46,7 +43,6 @@ class Exam extends GbDbObject {
                 self::P2_SCORE_KEY => $p2_score,
                 self::P3_SCORE_KEY => $p3_score,
                 self::P4_SCORE_KEY => $p4_score,
-                self::P5_SCORE_KEY => $p5_score,
                 self::TOTAL_SCORE_KEY => $total_score
             )
         );
@@ -71,7 +67,6 @@ class Exam extends GbDbObject {
         $this->p2Score = $params[self::P2_SCORE_KEY];
         $this->p3Score = $params[self::P3_SCORE_KEY];
         $this->p4Score = $params[self::P4_SCORE_KEY];
-        $this->p5Score = $params[self::P5_SCORE_KEY];
         $this->totalScore = $params[self::TOTAL_SCORE_KEY];
     }
     
@@ -89,7 +84,6 @@ class Exam extends GbDbObject {
             self::P2_SCORE_KEY => $this->p2Score,
             self::P3_SCORE_KEY => $this->p3Score,
             self::P4_SCORE_KEY => $this->p4Score,
-            self::P5_SCORE_KEY => $this->p5Score,
             self::TOTAL_SCORE_KEY => $this->totalScore,
         );
     }
@@ -103,11 +97,9 @@ class Exam extends GbDbObject {
     public function getId() {
         return $this->id;
     }
-
     public function getSectionId() {
         return $this->sectionId;
     }
-
     public function getP1Score() {
         return $this->p1Score;
     }
@@ -120,10 +112,6 @@ class Exam extends GbDbObject {
     public function getP4Score() {
         return $this->p4Score;
     }
-    public function getP5Score() {
-        return $this->p5Score;
-    }
-
     public function getTotalScore() {
         return $this->totalScore;
     }

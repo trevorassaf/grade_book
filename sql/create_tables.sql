@@ -16,12 +16,10 @@ CREATE TABLE StatSets (
     p2_avg DOUBLE NOT NULL,
     p3_avg DOUBLE NOT NULL,
     p4_avg DOUBLE NOT NULL,
-    p5_avg DOUBLE NOT NULL,
     p1_std_dev DOUBLE NOT NULL,
     p2_std_dev DOUBLE NOT NULL,
     p3_std_dev DOUBLE NOT NULL,
     p4_std_dev DOUBLE NOT NULL,
-    p5_std_dev DOUBLE NOT NULL,
     PRIMARY KEY(id)
 );
 
@@ -43,7 +41,6 @@ CREATE TABLE Exams (
     p2_score INT NOT NULL,
     p3_score INT NOT NULL,
     p4_score INT NOT NULL,
-    p5_score INT NOT NULL,
     total_score INT NOT NULL,
     PRIMARY KEY(id)
 );

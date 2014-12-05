@@ -65,7 +65,6 @@ class SectionExamsBlink implements Blink {
             $html .= "<td class='p2-score'>".$exam->getP2Score()."</td>";
             $html .= "<td class='p3-score'>".$exam->getP3Score()."</td>";
             $html .= "<td class='p4-score'>".$exam->getP4Score()."</td>";
-            $html .= "<td class='p5-score'>".$exam->getP5Score()."</td>";
             $html .= "<td class='total-score'>".$exam->getTotalScore()."</td>";
             $html .= "<td class='delete-exam'>";
             $html .= "<form name='".GradebookApi::REMOVE_FORM."' action='".GradebookApi::genSectionUrl($this->section)."' method='".GradebookApi::REMOVE_HTTP_TYPE."'>";
@@ -98,8 +97,6 @@ class SectionExamsBlink implements Blink {
         $html .= "<input id='p3-input' type='text' name='".GradebookApi::P3_KEY."' placeholder='".GradebookApi::P3_PLACEHOLDER."' required />";
         $html .= "<label for='p4-input'>P4 Score: </label>";
         $html .= "<input id='p4-input' type='text' name='".GradebookApi::P4_KEY."' placeholder='".GradebookApi::P4_PLACEHOLDER."' required />";
-        $html .= "<label for='p5-input'>P5 Score: </label>";
-        $html .= "<input id='p5-input' type='text' name='".GradebookApi::P5_KEY."' placeholder='".GradebookApi::P5_PLACEHOLDER."' required />";
         $html .= "<input type='submit' value='Add Exam' />";
         $html .= "</form>";
         $html .= "</div>";

@@ -28,7 +28,6 @@ class StatSetBlink implements Blink {
         $html .= "<td class='p2-label'>P2</td>";
         $html .= "<td class='p3-label'>P3</td>";
         $html .= "<td class='p4-label'>P4</td>";
-        $html .= "<td class='p5-label'>P5</td>";
         $html .= "<td class='total-label'>Total</td>";
         $html .= "</tr>";
 
@@ -39,7 +38,6 @@ class StatSetBlink implements Blink {
         $html .= "<td class='p2-avg'>".$this->statSet->getP2Avg()."</td>";
         $html .= "<td class='p3-avg'>".$this->statSet->getP3Avg()."</td>";
         $html .= "<td class='p4-avg'>".$this->statSet->getP4Avg()."</td>";
-        $html .= "<td class='p5-avg'>".$this->statSet->getP5Avg()."</td>";
         $html .= "<td class='total-avg'>".$this->statSet->getTotalAvgScore()."</td>";
         $html .= "</tr>"; 
 
@@ -50,7 +48,6 @@ class StatSetBlink implements Blink {
         $html .= "<td class='p2-stdev'>".$this->statSet->getP2Std()."</td>";
         $html .= "<td class='p3-stdev'>".$this->statSet->getP3Std()."</td>";
         $html .= "<td class='p4-stdev'>".$this->statSet->getP4Std()."</td>";
-        $html .= "<td class='p5-stdev'>".$this->statSet->getP5Std()."</td>";
         $html .= "<td class='total-std'>".$this->statSet->getTotalStdDev()."</td>";
         $html .= "</tr>"; 
 

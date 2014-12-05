@@ -27,14 +27,12 @@ class GradebookApi extends Api {
     const P2_KEY = "p2";
     const P3_KEY = "p3";
     const P4_KEY = "p4";
-    const P5_KEY = "p5";
 
     // Add Placeholders
     const P1_PLACEHOLDER = "P1 score...";
     const P2_PLACEHOLDER = "P2 score...";
     const P3_PLACEHOLDER = "P3 score...";
     const P4_PLACEHOLDER = "P4 score...";
-    const P5_PLACEHOLDER = "P5 score...";
 
     // Remove op
     const EXAM_ID_KEY = "id";
@@ -57,7 +55,6 @@ class GradebookApi extends Api {
         $p2,
         $p3,
         $p4,
-        $p5,
         $sectionId,
         $examId;
 
@@ -106,8 +103,7 @@ class GradebookApi extends Api {
                         !isset($_GET[self::SECTION_ID_KEY]) ||
                         !isset($_POST[self::P2_KEY]) ||
                         !isset($_POST[self::P3_KEY]) ||
-                        !isset($_POST[self::P4_KEY]) ||
-                        !isset($_POST[self::P5_KEY])) {
+                        !isset($_POST[self::P4_KEY])) {
                     $this->errorMode = GradebookErrorMode::UNSET_PARAM;
                     $this->isValidRequest = false;
                     return;
@@ -118,7 +114,6 @@ class GradebookApi extends Api {
                 $this->p2 = $_POST[self::P2_KEY];
                 $this->p3 = $_POST[self::P3_KEY];
                 $this->p4 = $_POST[self::P4_KEY];
-                $this->p5 = $_POST[self::P5_KEY];
                 $this->errorMode = GradebookErrorMode::REQ;
                 $this->isValidRequest = true;
                 break;
@@ -159,10 +154,6 @@ class GradebookApi extends Api {
 
     public function getP4() {
         return $this->p4;
-    }
-
-    public function getP5() {
-        return $this->p5;
     }
 
     public function getSectionId() {

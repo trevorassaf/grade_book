@@ -60,13 +60,11 @@ function processAddOp($gb_api) {
     $p2_score = $gb_api->getP2();
     $p3_score = $gb_api->getP3();
     $p4_score = $gb_api->getP4();
-    $p5_score = $gb_api->getP5();
 
     $total = $p1_score
         + $p2_score
         + $p3_score
-        + $p4_score
-        + $p5_score;
+        + $p4_score;
 
     $exam = Exam::create(
         $gb_api->getSectionId(),
@@ -74,7 +72,6 @@ function processAddOp($gb_api) {
         $p2_score,
         $p3_score,
         $p4_score,
-        $p5_score,
         $total
     );
 }
