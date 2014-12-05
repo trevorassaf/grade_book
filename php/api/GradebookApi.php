@@ -20,8 +20,7 @@ class GradebookApi extends Api {
     const REMOVE_OP_VALUE = "remove-exam";
 
     // Add op
-    const FIRST_NAME_KEY = "first_name";
-    const LAST_NAME_KEY = "last_name";
+    const SID_KEY = "sid";
     const P1_KEY = "p1";
     const P2_KEY = "p2";
     const P3_KEY = "p3";
@@ -29,8 +28,7 @@ class GradebookApi extends Api {
     const P5_KEY = "p5";
 
     // Add Placeholders
-    const FIRST_NAME_PLACEHOLDER = "First name...";
-    const LAST_NAME_PLACEHOLDER = "Last name...";
+    const SID_PLACEHOLDER = "Student Id (from your local gradebook copy)";
     const P1_PLACEHOLDER = "P1 score...";
     const P2_PLACEHOLDER = "P2 score...";
     const P3_PLACEHOLDER = "P3 score...";
@@ -57,8 +55,7 @@ class GradebookApi extends Api {
 
     private
         $op,
-        $firstName,
-        $lastName,
+        $sid,
         $p1,
         $p2,
         $p3,
@@ -109,8 +106,7 @@ class GradebookApi extends Api {
         switch ($this->op) {
             case self::ADD_OP_VALUE:
                 if (!isset($_POST[self::P1_KEY]) ||
-                        !isset($_POST[self::FIRST_NAME_KEY]) ||
-                        !isset($_POST[self::LAST_NAME_KEY]) ||
+                        !isset($_POST[self::SID_KEY]) ||
                         !isset($_GET[self::SECTION_ID_KEY]) ||
                         !isset($_POST[self::P2_KEY]) ||
                         !isset($_POST[self::P3_KEY]) ||
@@ -122,8 +118,7 @@ class GradebookApi extends Api {
                 }
 
                 $this->sectionId = (int)$_GET[self::SECTION_ID_KEY];
-                $this->firstName = $_POST[self::FIRST_NAME_KEY];
-                $this->lastName = $_POST[self::LAST_NAME_KEY];
+                $this->sid = $_POST[self::SID_KEY];
                 $this->p1 = $_POST[self::P1_KEY];
                 $this->p2 = $_POST[self::P2_KEY];
                 $this->p3 = $_POST[self::P3_KEY];
@@ -155,12 +150,8 @@ class GradebookApi extends Api {
         return $this->op;
     }
 
-    public function getFirstName() {
-        return $this->firstName;
-    }
-
-    public function getLastName() {
-        return $this->lastName;
+    public function getSid() {
+        return $this->sid;
     }
 
     public function getP1() {

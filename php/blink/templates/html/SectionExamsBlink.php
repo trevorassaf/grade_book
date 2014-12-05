@@ -24,9 +24,7 @@ class SectionExamsBlink implements Blink {
 
         // Sort exams by student name
         usort($this->exams, function($a, $b) {
-            $a_student_name = $a->getLastName().$a->getFirstName();
-            $b_student_name = $b->getLastName().$b->getFirstName();
-            return strcmp($a_student_name, $b_student_name);
+            return $b->getId() - $a->getId();
         });
     }
 
@@ -63,8 +61,7 @@ class SectionExamsBlink implements Blink {
                 
             $html .= "<tr class='exam-row'>";
             $html .= "<td class='order'>{$order}</td>"; 
-            $html .= "<td class='last-name'>".$exam->getLastName()."</td>";
-            $html .= "<td class='first-name'>".$exam->getFirstName()."</td>";
+            $html .= "<td class='sid'>".$exam->getSid()."</td>";
             $html .= "<td class='p1-score'>".$exam->getP1Score()."</td>";
             $html .= "<td class='p2-score'>".$exam->getP2Score()."</td>";
             $html .= "<td class='p3-score'>".$exam->getP3Score()."</td>";
@@ -94,10 +91,8 @@ class SectionExamsBlink implements Blink {
         $html .= "<form name='".GradebookApi::ADD_FORM."' action='".GradebookApi::genSectionUrl($this->section)."' method='".GradebookApi::ADD_HTTP_TYPE."'>";
         $html .= "<input type='hidden' name='".GradebookApi::OP_KEY."' value='".GradebookApi::ADD_OP_VALUE."' />";
         $html .= "<input type='hidden' name='".GradebookApi::SECTION_ID_KEY."' value='".$this->section->getId()."' required />";
-        $html .= "<label for='first-name-input'>First Name: </label>";
-        $html .= "<input id='first-name-input' type='text' name='".GradebookApi::FIRST_NAME_KEY."' placeholder='".GradebookApi::FIRST_NAME_PLACEHOLDER."' required />";
-        $html .= "<label for='last-name-input'>Last Name: </label>";
-        $html .= "<input id='last-name-input' type='text' name='".GradebookApi::LAST_NAME_KEY."' placeholder='".GradebookApi::LAST_NAME_PLACEHOLDER."' required />";
+        $html .= "<label for='sid-input'>Student Id: </label>";
+        $html .= "<input id='sid-input' type='text' name='".GradebookApi::SID_KEY."' placeholder='".GradebookApi::SID_PLACEHOLDER."' required />";
         $html .= "<label for='p1-input'>P1 Score: </label>";
         $html .= "<input id='p1-input' type='text' name='".GradebookApi::P1_KEY."' placeholder='".GradebookApi::P1_PLACEHOLDER."' required />";
         $html .= "<label for='p2-input'>P2 Score: </label>";

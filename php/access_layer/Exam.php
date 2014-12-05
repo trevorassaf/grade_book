@@ -7,12 +7,11 @@ class Exam extends GbDbObject {
     // -- CLASS VARS
     protected static $tableName = "Exams";
 
-    protected static $primaryKeys = array(self::ID_KEY);
+    protected static $primaryKeys = array(self::ID_KEY, self::SID_KEY);
 
     // -- CONSTANTS
     const ID_KEY = "id";
-    const FIRST_NAME_KEY = "first_name";
-    const LAST_NAME_KEY = "last_name";
+    const SID_KEY = "sid";
     const SECTION_ID_KEY = "section_id";
     const P1_SCORE_KEY = "p1_score";
     const P2_SCORE_KEY = "p2_score";
@@ -24,8 +23,7 @@ class Exam extends GbDbObject {
     // -- INSTANCE VARS
     private
         $id,
-        $firstName,
-        $lastName,
+        $sid,
         $sectionId,
         $p1Score,
         $p2Score,
@@ -35,8 +33,7 @@ class Exam extends GbDbObject {
         $totalScore;
 
     public static function create(
-        $first_name,
-        $last_name,
+        $sid,
         $section_id,
         $p1_score,
         $p2_score,
@@ -47,8 +44,7 @@ class Exam extends GbDbObject {
     ) {
         return static::createObject(
             array(
-                self::FIRST_NAME_KEY => $first_name,
-                self::LAST_NAME_KEY => $last_name,
+                self::SID_KEY => $sid,
                 self::SECTION_ID_KEY => $section_id,
                 self::P1_SCORE_KEY => $p1_score,
                 self::P2_SCORE_KEY => $p2_score,
@@ -74,8 +70,7 @@ class Exam extends GbDbObject {
 
     public function initInstanceVars($params) {
         $this->id = $params[self::ID_KEY];
-        $this->firstName = $params[self::FIRST_NAME_KEY];
-        $this->lastName = $params[self::LAST_NAME_KEY];
+        $this->sid = $params[self::SID_KEY];
         $this->sectionId = $params[self::SECTION_ID_KEY];
         $this->p1Score = $params[self::P1_SCORE_KEY];
         $this->p2Score = $params[self::P2_SCORE_KEY];
@@ -85,17 +80,16 @@ class Exam extends GbDbObject {
         $this->totalScore = $params[self::TOTAL_SCORE_KEY];
     }
     
-protected function createObjectCallback($init_params) {
-    $id = mysql_insert_id();
-    $init_params[self::ID_KEY] = $id;
-    return $init_params;
-  }
+    protected function createObjectCallback($init_params) {
+        $id = mysql_insert_id();
+        $init_params[self::ID_KEY] = $id;
+        return $init_params;
+    }
 
     protected function getDbFields() {
         return array(
             self::ID_KEY => $this->id,
-            self::FIRST_NAME_KEY => $this->firstName,
-            self::LAST_NAME_KEY => $this->lastName,
+            self::SID_KEY => $this->sid,
             self::SECTION_ID_KEY => $this->sectionId,
             self::P1_SCORE_KEY => $this->p1Score,
             self::P2_SCORE_KEY => $this->p2Score,
@@ -109,6 +103,7 @@ protected function createObjectCallback($init_params) {
     protected function getPrimaryKeys() {
         return array(
             self::ID_KEY => $this->id,
+            self::SID_KEY => $this->sid,
         );
     }
 
@@ -116,12 +111,8 @@ protected function createObjectCallback($init_params) {
         return $this->id;
     }
 
-    public function getFirstName() {
-        return $this->firstName;
-    }
-
-    public function getLastName() {
-        return $this->lastName;
+    public function getSid() {
+        return $this->sid;
     }
 
     public function getSectionId() {
@@ -147,5 +138,4 @@ protected function createObjectCallback($init_params) {
     public function getTotalScore() {
         return $this->totalScore;
     }
-
 }

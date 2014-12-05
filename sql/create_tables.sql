@@ -39,8 +39,7 @@ CREATE TABLE Sections (
 CREATE TABLE Exams (
     id INT NOT NULL AUTO_INCREMENT,
     section_id INT NOT NULL,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
+    sid INT NOT NULL UNIQUE,
     p1_score INT NOT NULL,
     p2_score INT NOT NULL,
     p3_score INT NOT NULL,
@@ -49,4 +48,3 @@ CREATE TABLE Exams (
     total_score INT NOT NULL,
     PRIMARY KEY(id)
 );
-

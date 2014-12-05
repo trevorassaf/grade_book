@@ -69,8 +69,7 @@ function processAddOp($gb_api) {
         + $p5_score;
 
     $exam = Exam::create(
-        $gb_api->getFirstName(),
-        $gb_api->getLastName(),
+        $gb_api->getSid(),
         $gb_api->getSectionId(),
         $p1_score,
         $p2_score,
