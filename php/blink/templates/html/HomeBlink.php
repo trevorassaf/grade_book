@@ -33,9 +33,14 @@ class HomeBlink implements Blink {
         $html .= $this->genTailHtml();
         return $html;
     }
-
+    
     public function genHeaderHtml() {
-        return "<html><body>";
+        $html = "<html>";
+        $html .= "<head>";
+        $html .= "<link rel='stylesheet' type='text/css' href='styles.css'>";
+        $html .= "</head>";
+        $html .= "<body>";
+        return $html;
     }
 
     public function genTailHtml() {
@@ -127,14 +132,14 @@ class HomeBlink implements Blink {
         $num_sections = count($sections);
         $gsi_name = $gsi->getFirstName() . " " . $gsi->getLastName();
         
-        $html = "<div class='gsi'><h3 class='gsi-name-label'>{$gsi_name}</h3>";
+        $html = "<div class='gsi'><div class='gsi-header'><h3 class='gsi-name-label'>{$gsi_name}</h3></div>";
 
         // Remove gsi form
-        $html .= "\n<form name='".HomeApi::REMOVE_GSI_FORM."' action='".HomeApi::ENDPOINT."' method='".HomeApi::REMOVE_GSI_METHOD."'>";
+        $html .= "\n<div class='gsi-header'><form name='".HomeApi::REMOVE_GSI_FORM."' action='".HomeApi::ENDPOINT."' method='".HomeApi::REMOVE_GSI_METHOD."'>";
         $html .= "\n<input type='hidden' name='".HomeApi::OP_KEY."' value='".HomeApi::REMOVE_GSI_OP_VALUE."' />";
         $html .= "\n<input type='hidden' name='".HomeApi::GSI_ID_KEY."' value='".$gsi->getId()."' />";
         $html .= "\n<input type='submit' value='Remove Gsi' />";
-        $html .= "</form>\n";
+        $html .= "</form></div>\n";
 
         // Sections
         for ($i = 0; $i < $num_sections; ++$i) {

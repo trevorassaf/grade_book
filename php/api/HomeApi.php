@@ -52,7 +52,7 @@ class HomeApi extends Api {
     const SECTION_NUMBER_PLACEHOLDER = "Section number...";
     const NUM_STUDENTS_PLACEHOLDER = "Number of students...";
 
-    const ENDPOINT = "http://organicdump.com/projects/gb/php/endpoints/index.php";
+    const ENDPOINT = "http://organicdump.com/";
 
     private
         $op,
@@ -64,7 +64,7 @@ class HomeApi extends Api {
         $sectionId;
 
     public function selfRedirect() {
-        header(self::ENDPOINT);
+        header('Location: ' . self::ENDPOINT);
     }
 
     protected function validateRequest() {

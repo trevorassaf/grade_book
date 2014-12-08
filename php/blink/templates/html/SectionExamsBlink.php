@@ -40,7 +40,6 @@ class SectionExamsBlink implements Blink {
         $gsi_name = $this->gsi->getFirstName() . " " . $this->gsi->getLastName(); 
         $section_number = $this->section->getSectionNumber();
         $num_exams = count($this->exams);
-
         $stat_blink = new StatSetBlink($this->sectionStatSet);
 
         // Construct html
@@ -90,13 +89,13 @@ class SectionExamsBlink implements Blink {
         $html .= "<input type='hidden' name='".GradebookApi::OP_KEY."' value='".GradebookApi::ADD_OP_VALUE."' />";
         $html .= "<input type='hidden' name='".GradebookApi::SECTION_ID_KEY."' value='".$this->section->getId()."' required />";
         $html .= "<label for='p1-input'>P1 Score: </label>";
-        $html .= "<input id='p1-input' type='text' name='".GradebookApi::P1_KEY."' placeholder='".GradebookApi::P1_PLACEHOLDER."' required />";
+        $html .= "<input class='score-input' id='p1-input' type='number' min='0' max='25' name='".GradebookApi::P1_KEY."' placeholder='".GradebookApi::P1_PLACEHOLDER."' required />";
         $html .= "<label for='p2-input'>P2 Score: </label>";
-        $html .= "<input id='p2-input' type='text' name='".GradebookApi::P2_KEY."' placeholder='".GradebookApi::P2_PLACEHOLDER."' required />";
+        $html .= "<input class='score-input' id='p2-input' type='number' min='0' max='25' name='".GradebookApi::P2_KEY."' placeholder='".GradebookApi::P2_PLACEHOLDER."' required />";
         $html .= "<label for='p3-input'>P3 Score: </label>";
-        $html .= "<input id='p3-input' type='text' name='".GradebookApi::P3_KEY."' placeholder='".GradebookApi::P3_PLACEHOLDER."' required />";
+        $html .= "<input class='score-input' id='p3-input' type='number' min='0' max='25' name='".GradebookApi::P3_KEY."' placeholder='".GradebookApi::P3_PLACEHOLDER."' required />";
         $html .= "<label for='p4-input'>P4 Score: </label>";
-        $html .= "<input id='p4-input' type='text' name='".GradebookApi::P4_KEY."' placeholder='".GradebookApi::P4_PLACEHOLDER."' required />";
+        $html .= "<input class='score-input' id='p4-input' type='number' min='0' max='25' name='".GradebookApi::P4_KEY."' placeholder='".GradebookApi::P4_PLACEHOLDER."' required />";
         $html .= "<input type='submit' value='Add Exam' />";
         $html .= "</form>";
         $html .= "</div>";
@@ -104,7 +103,12 @@ class SectionExamsBlink implements Blink {
     }
 
     public function genHeaderHtml() {
-        return "<html><body>";
+        $html = "<html>";
+        $html .= "<head>";
+        $html .= "<link rel='stylesheet' type='text/css' href='styles.css'>";
+        $html .= "</head>";
+        $html .= "<body>";
+        return $html;
     }
 
     public function genTailHtml() {

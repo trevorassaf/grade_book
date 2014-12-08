@@ -47,7 +47,7 @@ class GradebookApi extends Api {
     const PAGE_VIEW_TYPE = "GET";
 
     // Endpoint
-    const ENDPOINT = "http://organicdump.com/projects/gb/php/endpoints/section.php";
+    const ENDPOINT = "http://organicdump.com/section.php";
 
     private
         $op,
@@ -79,7 +79,7 @@ class GradebookApi extends Api {
             self::SECTION_ID_KEY => $this->sectionId,
         ));
         
-        header($url);
+        header('Location: '.$url);
     }
 
     protected function validateRequest() {

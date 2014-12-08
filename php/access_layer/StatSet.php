@@ -38,7 +38,7 @@ class StatSet extends DatabaseObject {
         $p1Std,
         $p2Std,
         $p3Std,
-        $p4Std,
+        $p4Std;
 
     public static function create(
         $num_exams,
@@ -51,7 +51,7 @@ class StatSet extends DatabaseObject {
         $p1_std,
         $p2_std,
         $p3_std,
-        $p4_std,
+        $p4_std
     ) {
         return static::createObject(
             array(
